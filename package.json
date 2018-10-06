@@ -2,8 +2,8 @@
   "name": "search-hotels",
   "version": "0.1.0",
   "private": true,
-  "engines": { 
-    "node": ">=8.12.0 <10.11.0" 
+  "engines": {
+    "node": ">=8.12.0 <10.11.0"
   },
   "dependencies": {
     "gh-pages": "^2.0.1",
@@ -28,5 +28,11 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "autoprefixer": "^9.1.5",
+    "cssnano": "^4.1.4",
+    "postcss-cli": "^6.0.0",
+    "postcss-nested": "^4.1.0"
+  }
 }
