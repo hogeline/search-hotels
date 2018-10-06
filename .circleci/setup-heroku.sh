@@ -7,7 +7,7 @@ cat >> ~/.ssh/config << EOF
 Host heroku.com
     HostName heroku.com
     User git
-    IdentityFile ~/.ssh/heroku
+    IdentityFile ~/.ssh/id_rsa
 EOF
 
 chmod 600 ~/.ssh/config
