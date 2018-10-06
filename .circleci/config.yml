@@ -1,0 +1,61 @@
+version: 2
+jobs:
+  build:
+    docker:
+      # CircleCI2はdockerコンテナで動くので動作させるイメージファイルを指定します。
+      # DockerHub上にあるイメージ指定します。nodeだと https://hub.docker.com/r/circleci/node/
+      - image: circleci/node:10.10.0
+
+    # コンテナ上での作業ディレクトリです。
+    working_directory: ~/repo
+    steps:
+      # githubからチェックアウト
+      - checkout
+
+      # キャッシュの読み込み。下の方でnode_modules/以下をキャッシュする設定している。
+      # キャッシュの区別にpackage.jsonじゃなくてyarn.lockファイルを使った方がいい気もする。
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+
+      - run: yarn install
+
+      # yarn installでインストールしたモジュールをnode_modulesごとキャッシュ。
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      # テスト
+      - run: yarn test
+
+      # ビルド
+      - run: yarn build
+
+      # 自作のスクリプトでダウンロード用にbuildディレクトリをtar.gzファイルにしている。
+      - run: bash .circleci/create-artifacts.sh
+
+      # ビルドしたファイルをダウンロードできるようにする。
+      # ビルド後にArtifactsというタブができるのでそこからダウンロードできる。
+      - store_artifacts:
+          path: ~/repo/artifacts
+          destination: artifact-file
+
+      # herokuへの接続設定
+      # CircleCI上で'HEROKU_APP_NAME'という名前でherokuのApp名を設定しておく。
+      - run: bash .circleci/setup-heroku.sh
+
+      # これ書かなくてもCircleCI上の秘密鍵は全部入るっぽい？
+      #      - add_ssh_keys:
+      #          fingerprints:
+      #            - "ce:e9:5d:a1:3e:e4:f6:36:d0:b7:2b:4a:0d:64:91:3a"
+
+      # masterブランチの場合だけherokuへpush
+      - deploy:
+          name: Deploy Master to Heroku
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              git push heroku master
+            fi
