@@ -46,7 +46,7 @@ jobs:
       # herokuへの接続設定
       # CircleCI上で'HEROKU_APP_NAME'という名前でherokuのApp名を設定しておく。
       - run: bash .circleci/setup-heroku.sh
-
+      - run: cat ~/.ssh/config
       # これ書かなくてもCircleCI上の秘密鍵は全部入るっぽい？
       #      - add_ssh_keys:
       #          fingerprints:
