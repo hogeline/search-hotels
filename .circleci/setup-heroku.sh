@@ -3,11 +3,15 @@
 # TODO config.ymlの方の環境変数で設定出来るようにする。
 git remote add heroku git@heroku.com:search-hotels-app.git
 
+echo yes | heroku keys:add 
+grunt build
+yes | grunt buildcontrol:heroku 
+
 cat >> ~/.ssh/config << EOF
 Host heroku.com
     HostName heroku.com
     User git
-    IdentityFile ~/.ssh/id_rsa
+    IdentityFile ~/.ssh/heroku
 EOF
 
 chmod 600 ~/.ssh/config
