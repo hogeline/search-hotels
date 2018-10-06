@@ -34,6 +34,9 @@ jobs:
       # ビルド
       - run: yarn build
 
+      # buildしたものをgh-pagesへアップロード
+      - run: gh-pages -d build
+
       # 自作のスクリプトでダウンロード用にbuildディレクトリをtar.gzファイルにしている。
       - run: bash .circleci/create-artifacts.sh
 
