@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 TIMESTAMP=`date -u +"%Y%m%d%H%M%S"`
 FILENAME="build_${TIMESTAMP}.tar.gz"
 FILENAME_NOMAP="build_${TIMESTAMP}-nomap.tar.gz"
