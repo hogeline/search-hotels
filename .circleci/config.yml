@@ -47,11 +47,6 @@ jobs:
       # CircleCI上で'HEROKU_APP_NAME'という名前でherokuのApp名を設定しておく。
       - run: bash .circleci/setup-heroku.sh
 
-      # これ書かなくてもCircleCI上の秘密鍵は全部入るっぽい？
-      #      - add_ssh_keys:
-      #          fingerprints:
-      #            - "ce:e9:5d:a1:3e:e4:f6:36:d0:b7:2b:4a:0d:64:91:3a"
-
       # masterブランチの場合だけherokuへpush
       - deploy:
           name: Deploy Master to Heroku
