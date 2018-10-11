@@ -1,7 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import ReactGoogleMapLoader from "react-google-maps-loader";
 import { withGoogleMap, GoogleMap, Marker } from "react-google-maps";
+require("dotenv").config();
 
 const InnerMap = withGoogleMap(props => (
   <GoogleMap
@@ -16,11 +18,29 @@ const InnerMap = withGoogleMap(props => (
 const Map = ({ lat, lng }) => {
   const position = { lat, lng };
   return (
-    <InnerMap
-      containerElement={<div />}
-      mapElement={<div className="map" />}
-      position={position}
-      marker={{ position }}
+    <ReactGoogleMapLoader
+      params={{
+        key: process.env.REACT_APP_GOOGLEMAP_API_KEY,
+        libraries: "places,geometry"
+      }}
+      render={(googleMaps, error) =>
+        googleMaps ? (
+          <div>
+            <InnerMap
+              containerElement={<div />}
+              mapElement={<div className="map" />}
+              position={position}
+              marker={{ position }}
+            />
+            {error ? error : "Google Maps is loaded !"}
+          </div>
+        ) : (
+          <div>
+            {/*Check for network error so loading state ends if user lost connection.*/}
+            {error === "Network Error" ? <p>{error}</p> : <p>isLoading...</p>}
+          </div>
+        )
+      }
     />
   );
 };

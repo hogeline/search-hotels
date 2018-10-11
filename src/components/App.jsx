@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ErrorBoundary from "./ErrorBoundary";
 import axios from "axios";
 
 import SearchForm from "./SearchForm";
@@ -69,7 +70,9 @@ class App extends Component {
           lat={this.state.lat}
           lng={this.state.lng}
         />
-        <Map lat={this.state.lat} lng={this.state.lng} />
+        <ErrorBoundary>
+          <Map lat={this.state.lat} lng={this.state.lng} />
+        </ErrorBoundary>
       </div>
     );
   }
