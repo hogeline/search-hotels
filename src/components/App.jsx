@@ -54,16 +54,18 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <h1>緯度経度検索</h1>
+      <div className="App">
+        <h1 className="App-title">ホテル検索</h1>
         <SearchForm onSubmit={place => this.handlePlaceSubmit(place)} />
-        <GeocodeResult
-          address={this.state.address}
-          location={this.state.location}
-        />
-        <ErrorBoundary>
-          <Map location={this.state.location} />
-        </ErrorBoundary>
+        <div className="App-result">
+          <ErrorBoundary>
+            <Map location={this.state.location} />
+          </ErrorBoundary>
+          <GeocodeResult
+            address={this.state.address}
+            location={this.state.location}
+          />
+        </div>
       </div>
     );
   }
