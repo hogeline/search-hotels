@@ -9,7 +9,7 @@ const HotelRow = ({ hotel }) => (
     <td>
       <a href={hotel.url}>{hotel.name}</a>
     </td>
-    <td>{hotel.price}</td>
+    <td>{hotel.price ? `${hotel.price}円` : "空室なし"}</td>
     <td>{hotel.reviewAverage}</td>
     <td>{hotel.reviewCount}</td>
     <td>{hotel.distance}</td>
@@ -21,7 +21,7 @@ HotelRow.propTypes = {
     name: PropTypes.string,
     url: PropTypes.string,
     thumbUrl: PropTypes.string,
-    place: PropTypes.string,
+    place: PropTypes.number,
     reviewAverage: PropTypes.string,
     reviewCount: PropTypes.number,
     distance: PropTypes.number
