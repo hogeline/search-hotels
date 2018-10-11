@@ -1,0 +1,13 @@
+.SearchPage {
+    &-title {
+        text-align: center;
+        margin-top: 0;
+    }
+    &-result-left {
+      display: flex;
+        
+    }
+    &-result-right {
+      margin-left: 20px; 
+    }
+}

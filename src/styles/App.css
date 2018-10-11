@@ -1,14 +1,10 @@
 .App {
     width: 1000px;
-    margin: 0 auto;
-    &-title {
-        text-align: center;
-    }
-    &-result-left {
-        display: flex;
-        
-    }
-    &-result-right {
-      margin-left: 25px; 
+    margin: 40px auto 0;
+    display: flex;
+    &-left-navi {
+        list-style-type: none;
+        margin-right: 40px;
+        border-right: 1px solic red;
     }
 }

@@ -1,6 +1,7 @@
 @import 'reset.css';
 @import 'common.css';
 @import 'App.css';
+@import 'SearchPage.css';
 @import 'SearchForm.css';
 @import 'GeocodeResult.css';
 @import 'Map.css';
