@@ -7,8 +7,7 @@ import Map from "./Map";
 import HotelsTable from "./HotelsTable";
 
 import { geocode } from "../domain/Geocoder";
-
-require("dotenv").config();
+import { searchHotelByLocation } from "../domain/HotelRepository";
 
 class App extends Component {
   constructor(props) {
@@ -17,11 +16,7 @@ class App extends Component {
       location: {
         lat: 35.6585805,
         lng: 139.7454329
-      },
-      hotels: [
-        { id: 111, name: "ホテルオークラ", url: "https://google.com" },
-        { id: 222, name: "アパホテル", url: "https://yahoo.co.jp" }
-      ]
+      }
     };
   }
 
@@ -41,7 +36,7 @@ class App extends Component {
         switch (status) {
           case "OK": {
             this.setState({ address, location });
-            break;
+            return searchHotelByLocation(location);
           }
           case "ZERO_RESULTS": {
             this.setErrorMessage("結果が見つかりませんでした");
@@ -51,6 +46,10 @@ class App extends Component {
             this.setErrorMessage("エラーが発生しました");
           }
         }
+        return [];
+      })
+      .then(hotels => {
+        this.setState({ hotels });
       })
       .catch(error => {
         this.setErrorMessage("通信に失敗しました");

@@ -1,4 +1,5 @@
 import axios from "axios";
+require("dotenv").config();
 
 const GEOCODE_ENDPOINT = "https://maps.googleapis.com/maps/api/geocode/json";
 
