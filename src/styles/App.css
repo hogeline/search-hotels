@@ -4,8 +4,11 @@
     &-title {
         text-align: center;
     }
-    &-result {
+    &-result-left {
         display: flex;
         
+    }
+    &-result-right {
+      margin-left: 25px; 
     }
 }
