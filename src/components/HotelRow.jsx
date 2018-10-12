@@ -22,7 +22,7 @@ HotelRow.propTypes = {
     url: PropTypes.string,
     thumbUrl: PropTypes.string,
     place: PropTypes.number,
-    reviewAverage: PropTypes.string,
+    reviewAverage: PropTypes.number,
     reviewCount: PropTypes.number,
     distance: PropTypes.number
   }).isRequired
