@@ -9,7 +9,7 @@ const SearchForm = props => (
     className="SearchForm"
     onSubmit={e => {
       e.preventDefault();
-      props.history.push(`/?place=${props.place}`);
+      props.history.push(`?place=${props.place}`);
       props.startSearch(props.place);
     }}
   >

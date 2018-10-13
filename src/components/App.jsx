@@ -9,15 +9,15 @@ const App = () => (
     <div className="App">
       <ul className="App-left-navi">
         <li>
-          <Link to="/">ホテル検索</Link>
+          <Link to="/search-hotels">ホテル検索</Link>
         </li>
         <li>
-          <Link to="/about">About</Link>
+          <Link to="/search-hotels/about">About</Link>
         </li>
       </ul>
       <Switch>
-        <Route exact path="/" component={SearchPage} />
-        <Route exact path="/about" component={AboutPage} />
+        <Route exact path="/search-hotels" component={SearchPage} />
+        <Route exact path="/search-hotels/about" component={AboutPage} />
       </Switch>
     </div>
   </Router>
