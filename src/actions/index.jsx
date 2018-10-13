@@ -16,12 +16,18 @@ export const setHotels = hotels => dispatch =>
     type: "CHANGE_HOTELS",
     hotels
   });
+export const setLoading = isLoading => dispatch =>
+  dispatch({
+    type: "LOADING_HOTELS",
+    isLoading
+  });
 export const setSortKey = sortKey => dispatch =>
   dispatch({
     type: "CHANGE_SORT_KEY",
     sortKey
   });
 export const startSearch = () => (dispatch, getState) => {
+  dispatch(setLoading(true));
   geocode(getState().place)
     .then(({ status, address, location }) => {
       switch (status) {
@@ -40,6 +46,7 @@ export const startSearch = () => (dispatch, getState) => {
       return [];
     })
     .then(hotels => {
+      dispatch(setLoading(false));
       dispatch(setHotels(hotels));
     })
     .catch(() => {

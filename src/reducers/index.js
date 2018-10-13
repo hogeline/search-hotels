@@ -54,6 +54,15 @@ const hotels = (state = [], action) => {
   }
 };
 
+const loadHotels = (state = false, action) => {
+  switch (action.type) {
+    case "LOADING_HOTELS":
+      return action.isLoading;
+    default:
+      return state;
+  }
+};
+
 const sortKey = (state = "price", action) => {
   switch (action.type) {
     case "CHANGE_SORT_KEY":
@@ -63,4 +72,10 @@ const sortKey = (state = "price", action) => {
   }
 };
 
-export default combineReducers({ place, geocodeResult, hotels, sortKey });
+export default combineReducers({
+  place,
+  geocodeResult,
+  hotels,
+  loadHotels,
+  sortKey
+});

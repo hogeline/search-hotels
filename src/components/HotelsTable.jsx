@@ -1,11 +1,12 @@
 import React from "react";
+import ReactLoading from "react-loading";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import _ from "lodash";
 import HotelRow from "./HotelRow";
 import HotelsClickableTh from "./HotelsClickableTh";
 
-const HotelsTable = ({ hotels }) => (
+const HotelsTable = ({ hotels, isLoading }) => (
   <table>
     <tbody>
       <tr>
@@ -16,15 +17,23 @@ const HotelsTable = ({ hotels }) => (
         <HotelsClickableTh label={"レビュー件数"} sortKey={"reviewCount"} />
         <HotelsClickableTh label={"距離"} sortKey={"distance"} />
       </tr>
-      {hotels.map(hotel => (
-        <HotelRow key={hotel.id} hotel={hotel} />
-      ))}
+      {isLoading ? (
+        <ReactLoading
+          type={"spokes"}
+          color={"#0000ff"}
+          height={"70%"}
+          width={"70%"}
+        />
+      ) : (
+        hotels.map(hotel => <HotelRow key={hotel.id} hotel={hotel} />)
+      )}
     </tbody>
   </table>
 );
 
 HotelsTable.propTypes = {
-  hotels: PropTypes.arrayOf(PropTypes.any)
+  hotels: PropTypes.arrayOf(PropTypes.any),
+  isLoading: PropTypes.bool.isRequired
 };
 
 HotelsTable.defaultProps = {
@@ -34,5 +43,6 @@ HotelsTable.defaultProps = {
 const sortedHotels = (hotels, sortKey) => _.sortBy(hotels, h => h[sortKey]);
 
 export default connect(state => ({
-  hotels: sortedHotels(state.hotels, state.sortKey)
+  hotels: sortedHotels(state.hotels, state.sortKey),
+  isLoading: state.loadHotels
 }))(HotelsTable);
