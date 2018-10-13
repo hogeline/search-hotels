@@ -1,10 +1,10 @@
 import React from "react";
-import ReactLoading from "react-loading";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import _ from "lodash";
 import HotelRow from "./HotelRow";
 import HotelsClickableTh from "./HotelsClickableTh";
+import Loading from "./Loading";
 
 const HotelsTable = ({ hotels, isLoading }) => (
   <table>
@@ -17,16 +17,10 @@ const HotelsTable = ({ hotels, isLoading }) => (
         <HotelsClickableTh label={"レビュー件数"} sortKey={"reviewCount"} />
         <HotelsClickableTh label={"距離"} sortKey={"distance"} />
       </tr>
-      {isLoading ? (
-        <ReactLoading
-          type={"spokes"}
-          color={"#0000ff"}
-          height={"70%"}
-          width={"70%"}
-        />
-      ) : (
-        hotels.map(hotel => <HotelRow key={hotel.id} hotel={hotel} />)
-      )}
+      <Loading isLoading={isLoading} />
+      {hotels.map(hotel => (
+        <HotelRow key={hotel.id} hotel={hotel} />
+      ))}
     </tbody>
   </table>
 );
