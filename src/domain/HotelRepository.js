@@ -5,6 +5,7 @@ require("dotenv").config();
 
 export const searchHotelByLocation = location => {
   const params = {
+    format: "json",
     applicationId: process.env.REACT_APP_RAKUTEN_APP_ID,
     datumType: 1,
     latitude: location.lat,
