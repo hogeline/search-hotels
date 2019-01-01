@@ -1,0 +1,33 @@
+header {
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+  height: 60px;
+  padding: 0 30px;
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgba(160,166,179,0.3);
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  .&-logo {
+    a {
+      float: left;
+      line-height: 60px;
+      font-size: 24px;
+      font-weight: 600;
+      color: #717782;
+    }
+  }
+  .&-menu-navi {
+    margin-right: 60px;
+    a {
+      float: right;
+      line-height: 60px;
+      margin: 0 15px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #2b546a;
+      transition: all .2s;
+    }
+  }
+}
