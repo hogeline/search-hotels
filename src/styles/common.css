@@ -9,6 +9,12 @@ body {
   color: $text;
 }
 
+.container {
+  width: 1280px;
+  text-align: center;
+  margin: 0 auto;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
