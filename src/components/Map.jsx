@@ -26,14 +26,13 @@ const Map = ({ location }) => (
             location={location}
             marker={{ position: location }}
           />
-          {error ? error : "Google Maps is loaded !"}
+          {error ? console.log(error) : ""}
         </div>
       ) : (
-        <div>
-          {/*Check for network error so loading state ends if user lost connection.*/}
-          {error === "Network Error" ? <p>{error}</p> : <p>isLoading...</p>}
-        </div>
-      )
+          <div>
+            {error === "Network Error" ? <p>{error}</p> : <p>isLoading...</p>}
+          </div>
+        )
     }
   />
 );

@@ -17,13 +17,13 @@ const HotelRow = ({ hotel }) => (
       </div>
       <div className="hotel-info-detail">
         <div className="detail hotel-star">
-          <i class="far fa-star" />{hotel.reviewAverage ? hotel.reviewAverage : "なし"}
+          <i className="far fa-star" />{hotel.reviewAverage ? hotel.reviewAverage : "なし"}
         </div>
         <div className="detail hotel-review">
-          <i class="far fa-comment" />{hotel.reviewCount ? `${hotel.reviewCount}件` : "0件"}
+          <i className="far fa-comment" />{hotel.reviewCount ? `${hotel.reviewCount}件` : "0件"}
         </div>
         <div className="detail hotel-distance">
-          <i class="fa fa-road" />{`${hotel.distance}m`}
+          <i className="fa fa-road" />{`${hotel.distance}m`}
         </div>
       </div>
     </div>

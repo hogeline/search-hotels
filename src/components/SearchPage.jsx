@@ -20,19 +20,19 @@ class SearchPage extends Component {
         <div className="container">
           <h1 className="SearchPage-title">ホテル検索</h1>
           <SearchForm history={this.props.history} />
-          <div className="SearchPage-result-left">
+          <div className="SearchPage-geocode">
+            <GeocodeResult
+              address={this.props.geocodeResult.address}
+              location={this.props.geocodeResult.location}
+            />
+          </div>
+          <div className="SearchPage-map">
             <ErrorBoundary>
               <Map location={this.props.geocodeResult.location} />
             </ErrorBoundary>
-            <div className="SearchPage-result-right">
-              <GeocodeResult
-                address={this.props.geocodeResult.address}
-                location={this.props.geocodeResult.location}
-              />
-              <h2>検索結果</h2>
-              <HotelsTable />
-            </div>
           </div>
+          <h2>ホテル検索結果</h2>
+          <HotelsTable />
         </div>
       </div>
     );
