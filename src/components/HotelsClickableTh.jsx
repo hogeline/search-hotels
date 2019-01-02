@@ -5,13 +5,13 @@ import PropTypes from "prop-types";
 import { setSortKey } from "../actions";
 
 const HotelsClickableTh = props => (
-  <th
+  <div
     className="HotelsClickableTh"
     onClick={() => props.setSortKey(props.sortKey)}
   >
     {props.label}
     {props.isSelected ? "▲" : ""}
-  </th>
+  </div>
 );
 
 HotelsClickableTh.propTypes = {

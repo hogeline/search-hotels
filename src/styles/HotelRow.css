@@ -1,0 +1,57 @@
+.hotel {
+  display: flex;
+  &-icon {
+    text-align: center;
+    width: 20%;
+    .image-bg {
+      display: inline-block;
+      max-width: 100px;
+      margin: 0 auto;
+      img {
+        padding: 10px 0;
+      }
+    }
+  }
+  &-info {
+    width: 70%;
+    margin-left: 20px;
+    text-align: left;
+    .hotel-name {
+      padding-top: 8px;
+      font-size: 20px;
+      a {
+        color: $mainColor;
+        font-weight: 500;
+        transition: all .2s;
+        &:hover {
+          color: $subColor;
+        }
+      }
+    }
+    .hotel-price {
+      padding-top: 10px;
+      font-size: 18px;
+    }
+    &-detail {
+      display: flex;
+      .detail {
+        margin-right: 10px;
+        width: 100px;
+        line-height: 60px;
+        vertical-align: low;
+      }
+    }
+  }
+}
+
+.card {
+  height: 150px;
+  width: 100%;
+  padding: 10px;
+  background-color: White;
+  box-shadow: 0 2px 6px #c1ced7;
+}
+
+.far, .fa {
+  margin-right: 5px;
+}
