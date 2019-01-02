@@ -14,8 +14,7 @@ const HotelsTable = ({ hotels, isLoading }) => (
       <HotelsClickableTh label={"レビュー件数"} sortKey={"reviewCount"} />
       <HotelsClickableTh label={"距離"} sortKey={"distance"} />
     </div>
-    <Loading isLoading={isLoading} />
-    {hotels.map(hotel => (
+    {isLoading ? <div className="Loading"><Loading isLoading={isLoading} /></div> : hotels.map(hotel => (
       <HotelRow key={hotel.id} hotel={hotel} />
     ))}
   </div>
