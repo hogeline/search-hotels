@@ -6,12 +6,11 @@ import { setSortKey } from "../actions";
 
 const HotelsClickableTh = props => (
   <div
-    className="HotelsClickableTh"
+    className={props.isSelected ? "sort-btn blue" : "sort-btn"}
     onClick={() => props.setSortKey(props.sortKey)}
   >
     {props.label}
-    {props.isSelected ? "▲" : ""}
-  </div>
+  </div >
 );
 
 HotelsClickableTh.propTypes = {

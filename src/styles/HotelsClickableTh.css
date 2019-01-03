@@ -1,8 +1,17 @@
-.HotelsClickableTh {
+.sort-btn {
   display: inline-block;
+  width: 20%;
+  margin: 10px;
   width: 120px;
   padding: 10px;
   font-weight: 600;
-  color: $subColor;
+  color: $mainColor;
+  border: solid 1px $subColor;
   cursor: pointer;
+  border-radius: 10px;
+}
+
+.blue {
+  background-color: $subColor;
+  color: #fff;
 }
