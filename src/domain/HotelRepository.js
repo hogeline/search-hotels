@@ -7,12 +7,15 @@ export const searchHotelByLocation = location => {
   const params = {
     format: "json",
     applicationId: process.env.REACT_APP_RAKUTEN_APP_ID,
+    checkinDate: "2019-02-01",
+    checkoutDate: "2019-02-2",
     datumType: 1,
     latitude: location.lat,
     longitude: location.lng
   };
   return Rakuten.Travel.simpleHotelSearch(params).then(result =>
     result.data.hotels.map(hotel => {
+      console.log(hotel);
       const basicInfo = hotel.hotel[0].hotelBasicInfo;
       const distance = geolib.getDistance(
         { latitude: location.lat, longitude: location.lng },

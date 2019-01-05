@@ -1,17 +1,19 @@
 .SearchForm {
-  text-align: center;
   margin-bottom: 40px;
-
   &-input {
     font-size: 24px;
     padding: 4px 3px 5px;
+    margin-right: 2px;
   }
-
+  .calender {
+    display: inline-block;
+  }
   &-submit {
     -webkit-appearance: none;
-    font-size: 24px;
+    font-size: 22px;
     background-color: #fff;
     border: 1px solid #ccc;
+    padding: 3px 15px;
     border-radius: 3px;
   }
 }
