@@ -3,8 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 import { setPlace, startSearch } from "../actions";
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import DatePicker from 'material-ui/DatePicker';
+import Calendar from "../components/Calendar";
 
 const SearchForm = props => (
   <form
@@ -15,11 +14,7 @@ const SearchForm = props => (
       props.startSearch(props.place);
     }}
   >
-    <MuiThemeProvider>
-      <div className="choseDate">
-        宿泊日：<i className="fa fa-calendar-alt" /><DatePicker hintText="日付を選択" mode="landscape" className="calender" />
-      </div>
-    </MuiThemeProvider>
+    <Calendar />
     <div>
       <input
         className="SearchForm-input"
